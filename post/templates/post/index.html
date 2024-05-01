@@ -1,0 +1,35 @@
+{% load static %}
+{% load markdown %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <title>AenStarAX | 首页</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+        <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+        <script src="{% static 'js/semantic.min.js' %}"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+
+    <body>
+        <div class="ui center aligned grid">
+            <div class="ten wide column" style="overflow: auto;">
+                <h1>AenStarAX的博客</h1>
+                <b style="color: rgba(0, 0, 0, 0.508);">随手搭的博客，监督和记录自己</b>
+                <h4 class="ui horizontal divider">LIST</h4>
+                <div class="ui segment">
+                    {% for post in posts %}
+                    <b style="float: left;">{{ post.id }}</b>
+                    <a href="{% url 'post:view' post.id %}" style="float: center;font-size: 20px;">{{ post.title }}</a>
+                    
+                    <b style="float: right;">{{ post.date }}</b>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

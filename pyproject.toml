@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "aenstarblog"
+version = "0.1.0"
+description = "AenStar Blog"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.4"
+markdown = "^3.6"
+python-dotenv = "^1.0.1"
+pymdown-extensions = "^10.7.1"
+pygments = "^2.17.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
