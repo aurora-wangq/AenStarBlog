@@ -52,6 +52,7 @@ def index(request: HttpRequest):
         POST = sorted(POSTS, key=lambda x: x['id'])
         return render(request, 'post/index.html', {
             "posts": POST,
+            "num": len(POST),
         })
     if request.method =='POST':
         return HttpResponseBadRequest('None')
