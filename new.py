@@ -13,5 +13,5 @@ parser.add_argument('title', help='Title for the post')
 
 args = parser.parse_args()
 
-with open(POST_PATH + '/' + args.title + '.md', 'w') as f:
+with open(POST_PATH + '/' + args.title + '.md', 'w', encoding='utf-8') as f:
     f.write(f'title:{args.title}\nauthor:{AUTHOR}\ndate:{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}\n---')
