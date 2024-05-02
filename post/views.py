@@ -35,17 +35,18 @@ class MarkDownFile:
 def LoadPosts():
     global POSTS
     for file in os.listdir(POST_PATH):
-        f = os.path.join(POST_PATH, file)
-        mdf = MarkDownFile(f)
-        POSTS.append(
-            {
-                "id": mdf.id,
-                "title": mdf.title,
-                "author": mdf.author,
-                "date": mdf.date,
-                "content": mdf.content,
-            }
-        )
+        if file[-3:] == '.md' or file[-3:] == '.MD':
+            f = os.path.join(POST_PATH, file)
+            mdf = MarkDownFile(f)
+            POSTS.append(
+                {
+                    "id": mdf.id,
+                    "title": mdf.title,
+                    "author": mdf.author,
+                    "date": mdf.date,
+                    "content": mdf.content,
+                }
+            )
 
 LoadPosts()
 
