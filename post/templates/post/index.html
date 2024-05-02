@@ -14,19 +14,23 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
-
+<style>
+    body {
+        background-color: black;
+    }
+</style>
     <body>
         <div class="ui center aligned grid">
             <div class="ten wide column" style="overflow: auto;">
-                <h1>AenStarAX的博客</h1>
-                <b style="color: rgba(0, 0, 0, 0.508);">決心，勇氣，毅力</b>
-                <h4 class="ui horizontal divider">LIST</h4>
-                <b>目前总计<b style="color:cadetblue;"> {{ num }} </b>篇，嗯，再接再厉</b>
-                <div class="ui segment">
+                <h1 style="color: rgb(255, 255, 255);">{{ author }} 的博客</h1>
+                <b style="color: rgba(255, 255, 255, 0.508);">{{ sign }}</b>
+                <h4 class="ui horizontal inverted divider">LIST</h4>
+                <b style="color: rgb(255, 255, 255);">目前总计<b style="color:cadetblue;"> {{ num }} </b>篇，嗯，再接再厉</b>
+                <div class="ui segment" style="background-color: black;">
                     {% for post in posts %}
-                    <div>
+                    <div style="color: rgb(255, 255, 255);">
                         <b style="float: left;">{{ post.id }}</b>
-                        <a href="{% url 'post:view' post.id %}" style="float: center;font-size: 20px;">{{ post.title }}</a>
+                        <a href="{% url 'post:view' post.id %}" style="float: center;font-size: 18px;">{{ post.title }}</a>
                         <b style="float: right;">{{ post.date }}</b>
                     </div>
                     <div class="ui divider"></div>

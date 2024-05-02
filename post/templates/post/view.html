@@ -2,16 +2,6 @@
 {% load markdown %}
 <!DOCTYPE html>
 <html>
-    <style>
-        .codehilite {
-            overflow-y: auto;
-        }
-        .md {
-            word-wrap: break-word;
-            white-space: -moz-pre-wrap;
-            white-space: pre-wrap;
-        }
-    </style>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -19,20 +9,38 @@
         <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}" />
         <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/github-markdown.css' %}" />
         <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
         <script src="{% static 'js/semantic.min.js' %}"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
-
+    <style>
+        .codehilite {
+            overflow-y: auto;
+            background-color: #161b22;
+        }
+        .md {
+            word-wrap: break-word;
+            white-space: -moz-pre-wrap;
+            white-space: pre-wrap;
+            text-align: left; 
+            border: 1px solid rgb(65, 64, 64);
+            border-radius: 5px;
+            padding: 16px;
+        }
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+    </style>
     <body>
         <div class="ui center aligned grid">
-            <div class="ten wide column ui segment" style="margin-top: 50px;">
-                <h1>{{ post.title }}</h1>
-                <h4 class="ui horizontal divider">作者：{{ post.author }}</h4>
-                <div class="md" style="text-align: left; border: 1px solid rgba(0, 0, 0, 0.196); border-radius: 6px;padding: 5px;">
-                    {{ post.content | markdown | safe }}
-                </div>
+            <div class="nine wide column" style="background-color: black;margin-top: 20px;">
+                <div style="color: aliceblue;font-size: 25px;padding: 5px;">{{ post.title }}</div>
+                <h4 class="ui horizontal inverted divider">From:{{ post.author }}</h4>
+                <article class="markdown-body">
+                    <div class="md" style="font-size: 13px;">{{ post.content | markdown | safe }}</div>
+                </article>
             </div>
         </div>
     </body>

@@ -8,6 +8,8 @@ import os
 load_dotenv()
 
 POST_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '/_post'
+AUTHOR = os.getenv('AUTHOR')
+SIGNATURE = os.getenv('SIGNATURE')
 
 POSTS = []
 
@@ -51,6 +53,8 @@ def index(request: HttpRequest):
     if request.method == 'GET':
         POST = sorted(POSTS, key=lambda x: x['id'])
         return render(request, 'post/index.html', {
+            "author": AUTHOR,
+            "sign": SIGNATURE,
             "posts": POST,
             "num": len(POST),
         })
