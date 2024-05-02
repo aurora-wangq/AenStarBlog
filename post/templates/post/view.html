@@ -37,9 +37,9 @@
         <div class="ui center aligned grid">
             <div class="nine wide computer nine wide tablet fifteen wide mobile column" style="background-color: black;margin-top: 20px;">
                 <div style="color: aliceblue;font-size: 25px;padding: 5px;">{{ post.title }}</div>
+                <b style="color: #343f50;">{{ post.date }}</b>
                 <h4 class="ui horizontal inverted divider">From:{{ post.author }}</h4>
                 <div>
-
                     {% if last %}
                     <a href="{% url 'post:view' last %}" style="float: left;color: rgb(255, 255, 255);">上一篇</a>
                     {% else %}
