@@ -38,6 +38,21 @@
             <div class="nine wide computer nine wide tablet fifteen wide mobile column" style="background-color: black;margin-top: 20px;">
                 <div style="color: aliceblue;font-size: 25px;padding: 5px;">{{ post.title }}</div>
                 <h4 class="ui horizontal inverted divider">From:{{ post.author }}</h4>
+                <div>
+
+                    {% if last %}
+                    <a href="{% url 'post:view' last %}" style="float: left;color: rgb(255, 255, 255);">上一篇</a>
+                    {% else %}
+                    <a style="float: left;color: rgb(255, 255, 255);">没有啦</a>
+                    {% endif %}
+                    <a href="{% url 'post:index' %}" style="float: center;color: rgb(255, 255, 255);">首页</a>
+                    {% if next %}
+                    <a href="{% url 'post:view' next %}" style="float: right;color: rgb(255, 255, 255);">下一篇</a>
+                    {% else %}
+                    <a style="float: right;color: rgb(255, 255, 255);">没有啦</a>
+                    {% endif %}
+                </div>
+                <br>
                 <article class="markdown-body">
                     <div class="md" style="font-size: 15px;">{{ post.content | markdown | safe }}</div>
                 </article>

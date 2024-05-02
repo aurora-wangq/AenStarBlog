@@ -49,14 +49,15 @@ def LoadPosts():
 
 LoadPosts()
 
+posts = sorted(POSTS, key=lambda x: x['id'])
+
 def index(request: HttpRequest):
     if request.method == 'GET':
-        POST = sorted(POSTS, key=lambda x: x['id'])
         return render(request, 'post/index.html', {
             "author": AUTHOR,
             "sign": SIGNATURE,
-            "posts": POST,
-            "num": len(POST),
+            "posts": posts,
+            "num": len(posts),
         })
     if request.method =='POST':
         return HttpResponseBadRequest('None')
@@ -64,10 +65,18 @@ def index(request: HttpRequest):
 def view(request: HttpRequest, id: int):
     if request.method == 'GET':
         post = None
-        for p in POSTS:
-            if p['id'] == id:
-                post = p
+        next = None
+        last = None
+        for i in range(0, len(posts)):
+            if posts[i]['id'] == id:
+                post = posts[i]
+                if i + 1 < len(posts):
+                    next = posts[i + 1]['id']
+                if i - 1 >= 0:
+                    last = posts[i - 1]['id']
                 break
         return render(request, 'post/view.html', {
             "post": post,
+            "last": last,
+            "next": next,
         })
